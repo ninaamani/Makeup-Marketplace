@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="petal_and_glow_favicon_logo.svg" />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Petal & Glow ✿ Makeup Boutique</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blush:    #f9d7e3;
+      --lavender: #e8d7f5;
+      --mint:     #d4f0e8;
+      --butter:   #fdf3cc;
+      --peach:    #fde3cc;
+      --sky:      #d3eaf9;
+      --rose:     #e87d9a;
+      --plum:     #9b6bb5;
+      --sage:     #5a9e84;
+      --gold:     #c9984a;
+      --ink:      #2e1f36;
+      --soft:     #7a6587;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: #fdf8ff;
+      background-image:
+        radial-gradient(circle at 15% 20%, #f9d7e399 0px, transparent 320px),
+        radial-gradient(circle at 85% 70%, #e8d7f566 0px, transparent 280px),
+        radial-gradient(circle at 50% 50%, #fde3cc44 0px, transparent 400px);
+      font-family: 'DM Sans', sans-serif;
+      color: var(--ink);
+      min-height: 100vh;
+      padding-bottom: 80px;
+    }
+
+    /* ── HEADER ── */
+    header {
+      text-align: center;
+      padding: 64px 24px 40px;
+      position: relative;
+    }
+
+    .header-deco {
+      font-size: 1rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--soft);
+      font-weight: 300;
+      margin-bottom: 12px;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      background: linear-gradient(135deg, var(--rose) 0%, var(--plum) 60%, #c76eb5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    header p.tagline {
+      margin-top: 14px;
+      color: var(--soft);
+      font-size: 1.05rem;
+      font-weight: 300;
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .header-line {
+      width: 60px;
+      height: 3px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--rose), var(--plum));
+      margin: 20px auto 0;
+    }
+
+    /* ── ENTER PRODUCT BUTTON ── */
+    .header-actions {
+      margin-top: 28px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .enter-product-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      background: linear-gradient(135deg, var(--rose) 0%, var(--plum) 100%);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 11px 26px;
+      border-radius: 99px;
+      transition: transform 0.2s cubic-bezier(.22,.68,0,1.2), box-shadow 0.2s ease, filter 0.2s ease;
+      box-shadow: 0 4px 18px rgba(155,107,181,0.28);
+    }
+
+    .enter-product-btn:hover {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 8px 28px rgba(155,107,181,0.38);
+      filter: brightness(1.06);
+    }
+
+    .enter-product-btn .btn-icon {
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    /* ── GRID ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 28px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      border-radius: 24px;
+      padding: 28px 24px 22px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.35s cubic-bezier(.22,.68,0,1.2), box-shadow 0.35s ease;
+      cursor: pointer;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 1.5px solid rgba(255,255,255,0.8);
+      pointer-events: none;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.015);
+      box-shadow: 0 20px 48px rgba(155,107,181,0.18), 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    /* Alternating pastel backgrounds (cycles every 6) */
+    .card:nth-child(6n+1) { background: var(--blush);    box-shadow: 0 6px 24px rgba(249,215,227,0.6); }
+    .card:nth-child(6n+2) { background: var(--lavender); box-shadow: 0 6px 24px rgba(232,215,245,0.6); }
+    .card:nth-child(6n+3) { background: var(--butter);   box-shadow: 0 6px 24px rgba(253,243,204,0.6); }
+    .card:nth-child(6n+4) { background: var(--peach);    box-shadow: 0 6px 24px rgba(253,227,204,0.6); }
+    .card:nth-child(6n+5) { background: var(--mint);     box-shadow: 0 6px 24px rgba(212,240,232,0.6); }
+    .card:nth-child(6n+0) { background: var(--sky);      box-shadow: 0 6px 24px rgba(211,234,249,0.6); }
+
+    /* Loading state */
+    #loading {
+      text-align: center;
+      padding: 60px 20px;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--soft);
+      font-size: 1.1rem;
+      grid-column: 1 / -1;
+    }
+    #loading .spinner {
+      display: inline-block;
+      width: 28px; height: 28px;
+      border: 3px solid var(--lavender);
+      border-top-color: var(--plum);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 12px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Error state */
+    #error-msg {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--rose);
+      font-size: 0.9rem;
+      grid-column: 1 / -1;
+    }
+
+    /* Badge */
+    .badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 99px;
+      background: rgba(255,255,255,0.75);
+      color: var(--plum);
+      backdrop-filter: blur(6px);
+    }
+
+    /* Product image area */
+    .img-wrap {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 18px;
+      background: rgba(255,255,255,0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .card:hover .img-wrap img {
+      transform: scale(1.06);
+    }
+
+    /* Emoji fallback shown when image errors */
+    .img-wrap .emoji-fallback {
+      font-size: 4.5rem;
+      display: none;
+    }
+
+    /* Text */
+    .category {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--soft);
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .product-desc {
+      font-size: 0.82rem;
+      color: var(--soft);
+      line-height: 1.5;
+      margin-bottom: 16px;
+      font-weight: 300;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+    }
+
+    .price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--plum);
+    }
+
+    .add-btn {
+      border: none;
+      background: var(--plum);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 99px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      font-family: 'DM Sans', sans-serif;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .add-btn:hover { background: var(--rose); transform: scale(1.05); }
+
+    /* Decorative sparkle dots */
+    .sparkle {
+      position: fixed;
+      pointer-events: none;
+      font-size: 1.1rem;
+      opacity: 0.25;
+      animation: float 6s ease-in-out infinite;
+    }
+    .sparkle:nth-child(1) { top: 8%;  left: 4%;  animation-delay: 0s; }
+    .sparkle:nth-child(2) { top: 15%; right: 6%; animation-delay: 1.5s; }
+    .sparkle:nth-child(3) { top: 60%; left: 2%;  animation-delay: 3s; }
+    .sparkle:nth-child(4) { top: 75%; right: 3%; animation-delay: 0.8s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50%       { transform: translateY(-14px) rotate(15deg); }
+    }
+
+    /* ── CARD ENTRY ANIMATION ── */
+    .card {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: cardIn 0.55s ease forwards;
+    }
+
+    @keyframes cardIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      margin-top: 64px;
+      font-size: 0.8rem;
+      color: #c0aecb;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating decorations -->
+  <span class="sparkle">✿</span>
+  <span class="sparkle">✦</span>
+  <span class="sparkle">❀</span>
+  <span class="sparkle">✧</span>
+
+  <header>
+    <p class="header-deco">✦ curated beauty ✦</p>
+    <h1>Petal &amp; Glow</h1>
+    <p class="tagline">soft makeup for soft souls</p>
+    <div class="header-line"></div>
+
+    <!-- ── ENTER PRODUCT BUTTON ── -->
+    <div class="header-actions">
+      <a href="add-product.html" class="enter-product-btn">
+        <span class="btn-icon">✦</span>
+        Enter Product
+      </a>
+    </div>
+  </header>
+
+  <main class="grid" id="grid">
+    <div id="loading">
+      <div class="spinner"></div><br/>
+      Loading your lovely products…
+    </div>
+    <p id="error-msg">✦ Couldn't load products. Please check the sheet URL or try again. ✦</p>
+  </main>
+
+  <footer>
+    <p>✿ Petal &amp; Glow · cruelty-free · vegan-friendly · made with love ✿</p>
+  </footer>
+
+  <script>
+    const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTHGzIs-fJCHTvJwa15u_TxU73A9eZ0xHq6nCb18ccJJsab78wB_1m5fuDX0MUjU1xnYV3vhQepbJQg/pub?output=csv';
+
+    // ── CSV parser (handles quoted fields with commas) ──────────────────────
+    function parseCSV(text) {
+      const rows = [];
+      const lines = text.split(/\r?\n/).filter(l => l.trim());
+      for (const line of lines) {
+        const cols = [];
+        let cur = '', inQ = false;
+        for (let i = 0; i < line.length; i++) {
+          const ch = line[i];
+          if (ch === '"') { inQ = !inQ; }
+          else if (ch === ',' && !inQ) { cols.push(cur.trim()); cur = ''; }
+          else { cur += ch; }
+        }
+        cols.push(cur.trim());
+        rows.push(cols);
+      }
+      return rows;
+    }
+
+    // ── Build a card element from a product object ──────────────────────────
+    function makeCard(product, index) {
+      const article = document.createElement('article');
+      article.className = 'card';
+      article.style.animationDelay = `${0.05 + index * 0.07}s`;
+
+      const badgeHTML = product.class
+        ? `<span class="badge">${product.class}</span>` : '';
+
+      const imgSrc = product.img || '';
+      const imgHTML = imgSrc
+        ? `<img src="${imgSrc}" alt="${product.name}"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>`
+        : '';
+
+      // Format price: add $ if not already present
+      let price = (product.price || '').toString().trim();
+      if (price && !price.startsWith('$') && !price.startsWith('£') && !price.startsWith('€')) {
+        price = '$' + price;
+      }
+
+      article.innerHTML = `
+        ${badgeHTML}
+        <div class="img-wrap">
+          ${imgHTML}
+          <span class="emoji-fallback">✿</span>
+        </div>
+        <p class="category">${product.category || ''}</p>
+        <h2 class="product-name">${product.name || 'Unnamed Product'}</h2>
+        <p class="product-desc">${product.description || ''}</p>
+        <div class="card-footer">
+          <span class="price">${price}</span>
+          <button class="add-btn">Add to Bag</button>
+        </div>
+      `;
+      return article;
+    }
+
+    // ── Fetch & render ───────────────────────────────────────────────────────
+    async function loadProducts() {
+      const grid = document.getElementById('grid');
+      const loading = document.getElementById('loading');
+      const errorMsg = document.getElementById('error-msg');
+
+      try {
+        const res = await fetch(CSV_URL);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const text = await res.text();
+        const rows = parseCSV(text);
+
+        if (rows.length < 2) throw new Error('No data rows found');
+
+        // First row = headers (normalise to lowercase, trim)
+        const headers = rows[0].map(h => h.toLowerCase().trim());
+        const products = rows.slice(1).map(cols => {
+          const obj = {};
+          headers.forEach((h, i) => { obj[h] = (cols[i] || '').trim(); });
+          return obj;
+        }).filter(p => p.name); // skip empty rows
+
+        // Clear loading state
+        loading.remove();
+
+        // Render cards
+        products.forEach((product, i) => {
+          grid.appendChild(makeCard(product, i));
+        });
+
+      } catch (err) {
+        console.error('Failed to load products:', err);
+        loading.remove();
+        errorMsg.style.display = 'block';
+      }
+    }
+
+    loadProducts();
+  </script>
+</body>
+</html>
